@@ -1,6 +1,13 @@
 const BASE = '/api';
+const DEMO_MODE = import.meta.env.PROD && window.location.hostname.includes('vercel.app');
 
 async function request(path, options = {}) {
+  // Demo mode fallback for Vercel deployment
+  if (DEMO_MODE) {
+    console.warn('Demo mode: API calls disabled on Vercel deployment');
+    return getDemoData(path);
+  }
+  
   const res = await fetch(`${BASE}${path}`, {
     headers: { 'Content-Type': 'application/json' },
     ...options,
@@ -10,6 +17,26 @@ async function request(path, options = {}) {
     throw new Error(err.error || 'Request failed');
   }
   return res.json();
+}
+
+function getDemoData(path) {
+  // Demo data for when backend isn't available
+  if (path.startsWith('/users')) {
+    return { id: 'demo-user', name: 'Demo User' };
+  }
+  if (path.startsWith('/scenarios')) {
+    return [];
+  }
+  if (path.startsWith('/concepts')) {
+    return [];
+  }
+  if (path.startsWith('/daily')) {
+    return { scenario: null, completed: false };
+  }
+  if (path.startsWith('/stats')) {
+    return { eloQuiz: 1200, eloRange: 1200, attempts: 0, correct: 0 };
+  }
+  return {};
 }
 
 export const api = {
