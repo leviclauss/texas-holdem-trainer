@@ -1,9 +1,14 @@
 const BASE = '/api';
-const DEMO_MODE = import.meta.env.PROD && window.location.hostname.includes('vercel.app');
+
+function isDemoMode() {
+  return typeof window !== 'undefined' && 
+         import.meta.env.PROD && 
+         window.location.hostname.includes('vercel.app');
+}
 
 async function request(path, options = {}) {
   // Demo mode fallback for Vercel deployment
-  if (DEMO_MODE) {
+  if (isDemoMode()) {
     console.warn('Demo mode: API calls disabled on Vercel deployment');
     return getDemoData(path);
   }
