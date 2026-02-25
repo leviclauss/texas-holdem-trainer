@@ -1,5 +1,6 @@
 import PlayingCard from './PlayingCard';
 import DifficultyTag from './DifficultyTag';
+import PokerTable from './PokerTable';
 
 export default function ScenarioDisplay({ scenario, onAnswer, result, showResult }) {
   return (
@@ -18,6 +19,9 @@ export default function ScenarioDisplay({ scenario, onAnswer, result, showResult
         <InfoBox label="Stack" value={`${scenario.stackSize} BB`} />
         <InfoBox label="Pot" value={`${scenario.potSize} BB`} />
       </div>
+
+      {/* Table Position Visualization */}
+      <PokerTable heroPosition={scenario.heroPosition} villainPosition={scenario.villainPosition} />
 
       {/* Action History */}
       <div className="card-surface p-4">
