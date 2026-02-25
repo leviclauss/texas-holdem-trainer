@@ -12,6 +12,14 @@ const SEAT_LAYOUT = {
   CO:  { top: '88%', left: '85%',  labelSide: 'below' },
 };
 
+// Stack badges positioned toward table center (opposite of role label)
+const STACK_POSITION = {
+  below: 'bottom-full left-1/2 -translate-x-1/2 mb-1',   // label below → stack above
+  above: 'top-full left-1/2 -translate-x-1/2 mt-1',      // label above → stack below
+  left:  'left-full top-1/2 -translate-y-1/2 ml-1.5',    // label left  → stack right
+  right: 'right-full top-1/2 -translate-y-1/2 mr-1.5',   // label right → stack left
+};
+
 const POSITION_INFO = {
   BTN: { name: 'Button', desc: 'The dealer. Best position — acts last postflop.' },
   SB:  { name: 'Small Blind', desc: 'Posts the small blind. First to act postflop.' },
@@ -21,7 +29,7 @@ const POSITION_INFO = {
   CO:  { name: 'Cutoff', desc: 'One seat before the button. Strong late position.' },
 };
 
-export default function PokerTable({ heroPosition, villainPosition }) {
+export default function PokerTable({ heroPosition, villainPosition, heroStack, villainStack, potSize }) {
   const [tooltip, setTooltip] = useState({ pos: null, clientX: 0, clientY: 0 });
 
   function handleMouseMove(e, pos) {
@@ -44,11 +52,24 @@ export default function PokerTable({ heroPosition, villainPosition }) {
             boxShadow: 'inset 0 0 30px rgba(0,0,0,0.5), 0 0 15px rgba(0,0,0,0.3)',
           }}
         >
-          {/* Dealer chip in center */}
+          {/* Pot size or fallback label in center */}
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="text-[10px] sm:text-xs text-accent-gold/50 font-semibold tracking-widest uppercase">
-              6-Max
-            </div>
+            {potSize != null ? (
+              <div
+                className="px-2.5 py-0.5 rounded-full text-[10px] sm:text-xs font-bold tracking-wide"
+                style={{
+                  background: 'linear-gradient(135deg, #b8860b, #daa520)',
+                  color: '#1a1a1a',
+                  boxShadow: '0 1px 4px rgba(0,0,0,0.4)',
+                }}
+              >
+                {Number(potSize) % 1 === 0 ? potSize : Number(potSize).toFixed(1)} BB
+              </div>
+            ) : (
+              <div className="text-[10px] sm:text-xs text-accent-gold/50 font-semibold tracking-widest uppercase">
+                6-Max
+              </div>
+            )}
           </div>
         </div>
 
@@ -58,6 +79,7 @@ export default function PokerTable({ heroPosition, villainPosition }) {
           const isHero = pos === heroPosition;
           const isVillain = pos === villainPosition;
           const isActive = isHero || isVillain;
+          const stackValue = isHero ? heroStack : isVillain ? villainStack : null;
 
           return (
             <div
@@ -100,6 +122,28 @@ export default function PokerTable({ heroPosition, villainPosition }) {
                   `}
                 >
                   {isHero ? 'Hero' : 'Villain'}
+                </div>
+              )}
+
+              {/* Stack badge (toward table center, opposite of label) */}
+              {isActive && stackValue != null && (
+                <div
+                  className={`
+                    absolute whitespace-nowrap pointer-events-none
+                    ${STACK_POSITION[layout.labelSide]}
+                  `}
+                >
+                  <div
+                    className={`
+                      px-1.5 py-0.5 rounded-full text-[8px] sm:text-[9px] font-bold
+                      ${isHero
+                        ? 'bg-accent-green/20 text-accent-green-light border border-accent-green/40'
+                        : 'bg-red-900/30 text-red-400 border border-red-700/40'
+                      }
+                    `}
+                  >
+                    {stackValue} BB
+                  </div>
                 </div>
               )}
             </div>

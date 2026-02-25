@@ -21,7 +21,13 @@ export default function ScenarioDisplay({ scenario, onAnswer, result, showResult
       </div>
 
       {/* Table Position Visualization */}
-      <PokerTable heroPosition={scenario.heroPosition} villainPosition={scenario.villainPosition} />
+      <PokerTable
+        heroPosition={scenario.heroPosition}
+        villainPosition={scenario.villainPosition}
+        heroStack={scenario.stackSize}
+        villainStack={scenario.villainStackSize}
+        potSize={scenario.potSize}
+      />
 
       {/* Action History */}
       <div className="card-surface p-4">
