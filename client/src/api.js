@@ -25,23 +25,56 @@ async function request(path, options = {}) {
 }
 
 function getDemoData(path) {
-  // Demo data for when backend isn't available
-  if (path.startsWith('/users')) {
-    return { id: 'demo-user', name: 'Demo User' };
-  }
-  if (path.startsWith('/scenarios')) {
-    return [];
-  }
-  if (path.startsWith('/concepts')) {
-    return [];
-  }
-  if (path.startsWith('/daily')) {
-    return { scenario: null, completed: false };
-  }
-  if (path.startsWith('/stats')) {
-    return { eloQuiz: 1200, eloRange: 1200, attempts: 0, correct: 0 };
-  }
-  return {};
+  // Demo data for when backend isn't available  
+  const data = (() => {
+    if (path.startsWith('/users')) {
+      return { id: 'demo-user', eloQuiz: 1200, eloRange: 1200, created_at: new Date().toISOString() };
+    }
+    if (path.startsWith('/scenarios')) {
+      return [
+        {
+          id: 'demo-scenario-1',
+          title: 'Demo Hand',
+          description: 'Practice hand for demo mode',
+          street: 'preflop',
+          position: 'BB',
+          action: 'Demo action',
+          difficulty: 1
+        }
+      ];
+    }
+    if (path.startsWith('/concepts')) {
+      return [
+        {
+          id: 'demo-concept-1',
+          title: 'Demo Concept',
+          description: 'Practice concept for demo mode',
+          category: 'fundamentals'
+        }
+      ];
+    }
+    if (path.startsWith('/daily')) {
+      return { scenario: null, completed: false };
+    }
+    if (path.startsWith('/stats')) {
+      return { eloQuiz: 1200, eloRange: 1200, attempts: 0, correct: 0 };
+    }
+    if (path.startsWith('/ranges')) {
+      return [
+        {
+          id: 'demo-range-1',
+          title: 'Demo Range',
+          description: 'Practice range for demo mode',
+          position: 'BTN',
+          action: 'open'
+        }
+      ];
+    }
+    return {};
+  })();
+  
+  // Return a resolved promise to match async behavior
+  return Promise.resolve(data);
 }
 
 export const api = {
