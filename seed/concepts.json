@@ -1,0 +1,182 @@
+[
+  {
+    "id": "pot-odds",
+    "title": "Pot Odds",
+    "shortDescription": "Calculate whether a call is profitable based on the ratio of the pot to the bet you must call.",
+    "difficulty": "Beginner",
+    "category": "Fundamentals",
+    "content": "Pot odds represent the ratio between the current pot size and the cost of a call. They help you determine whether calling a bet is mathematically profitable.\n\n**How to Calculate:**\n1. Add up the current pot + villain's bet = total pot\n2. Divide the call amount by the total pot\n3. Convert to a percentage — this is the minimum equity you need to call profitably\n\n**Example:** Pot is 10BB, villain bets 5BB. You must call 5BB into a total pot of 20BB. 5/20 = 25%. You need at least 25% equity to call.\n\n**Key Principle:** If your hand's equity exceeds the pot odds requirement, calling is +EV (positive expected value). If not, folding is correct.\n\n**Common Pot Odds:**\n- 1/4 pot bet → need ~17% equity\n- 1/3 pot bet → need ~20% equity\n- 1/2 pot bet → need ~25% equity\n- 2/3 pot bet → need ~29% equity\n- Full pot bet → need ~33% equity\n- 2x pot bet → need ~40% equity",
+    "exampleHand": "You hold 8♥7♥ on a board of K♠6♥2♥. Pot is 8BB and villain bets 4BB. You need 4/(8+4+4) = 25% equity. With a flush draw (9 outs), you have ~36% equity on the flop — easy call.",
+    "keyTakeaways": [
+      "Always calculate pot odds before calling a bet",
+      "Compare your hand's equity to the pot odds requirement",
+      "Smaller bets require less equity to call profitably",
+      "Pot odds only consider the current street — implied odds look ahead"
+    ]
+  },
+  {
+    "id": "implied-odds",
+    "title": "Implied Odds",
+    "shortDescription": "The additional money you expect to win on future streets if you hit your draw.",
+    "difficulty": "Beginner",
+    "category": "Fundamentals",
+    "content": "Implied odds extend pot odds by considering the money you'll win on future streets when you complete your draw. They're the reason you can sometimes call bets even when pot odds alone don't justify it.\n\n**When Implied Odds Are High:**\n- Deep stacks (100BB+)\n- Villain has a strong but second-best hand\n- Your draw is hidden (e.g., a gutshot vs a flush draw)\n- Villain is likely to pay off big bets\n\n**When Implied Odds Are Low:**\n- Short stacks (limited money behind)\n- Obvious draws (4-flush on board)\n- Villain is capable of folding strong hands\n- Multi-way pots where you might hit but still lose\n\n**How to Estimate:**\nIf pot odds require 25% equity but you only have 20%, ask: 'Will I win enough extra BBs on future streets to make up the difference?' If villain has 80BB behind and will likely call a big bet when you hit, the answer is often yes.",
+    "exampleHand": "You hold 5♠4♠ on a Q♠8♦3♠ flop. Villain bets 6BB into an 8BB pot. Pot odds need ~27% equity, and your flush draw gives you ~35% — but even without the extra equity, the implied odds of stacking villain when a spade hits makes this a very profitable call.",
+    "keyTakeaways": [
+      "Implied odds justify calls that pot odds alone wouldn't",
+      "Stack depth is the primary driver of implied odds",
+      "Hidden draws have better implied odds than obvious ones",
+      "Reverse implied odds: when hitting your draw could still lose to a better hand"
+    ]
+  },
+  {
+    "id": "equity",
+    "title": "Equity",
+    "shortDescription": "Your hand's share of the pot based on how often it will win at showdown.",
+    "difficulty": "Beginner",
+    "category": "Fundamentals",
+    "content": "Equity is the percentage of the pot that 'belongs' to you based on how often your hand will win if all remaining cards are dealt. It's the foundation of poker math.\n\n**Types of Equity:**\n- **Raw equity:** Your win percentage against villain's exact hand\n- **Range equity:** Your win percentage against villain's entire range\n- **Fold equity:** The value gained when villain folds to your bet\n\n**Key Equity Matchups:**\n- Overpair vs underpair: ~80% vs 20%\n- Two overcards vs pair: ~45% vs 55%\n- Flush draw vs top pair: ~35% vs 65%\n- Set vs overpair: ~90% vs 10%\n- Open-ended straight draw: ~32% on flop, ~17% on turn\n\n**How to Use Equity:**\n1. Estimate villain's range\n2. Calculate your equity against that range\n3. Compare to pot odds / bet sizing\n4. If equity > pot odds requirement → call is +EV",
+    "exampleHand": "You hold A♠K♠ and villain has J♥J♣ preflop. Your equity is ~47% — nearly a coin flip. This is why AKs is considered a premium hand even though it needs to improve.",
+    "keyTakeaways": [
+      "Equity is a mathematical concept, not a guarantee",
+      "Always think in terms of ranges, not specific hands",
+      "Equity realization: not all equity can be fully captured (position matters)",
+      "Combine equity with pot odds to make optimal decisions"
+    ]
+  },
+  {
+    "id": "range-advantage",
+    "title": "Range Advantage",
+    "shortDescription": "When your overall range hits a board better than your opponent's range.",
+    "difficulty": "Intermediate",
+    "category": "Strategy",
+    "content": "Range advantage exists when the board texture favors one player's range of hands more than the other's. Understanding range advantage is key to knowing when to bet, how much to bet, and when to check.\n\n**Preflop Raiser's Advantage Boards:**\n- High card boards (A-K-x, K-Q-x): The raiser has more big pairs and AK/AQ\n- Paired high boards (K-K-x, Q-Q-x): Raiser has more trips combinations\n\n**Caller's Advantage Boards:**\n- Low connected boards (5-6-7, 4-5-6): Caller has more suited connectors\n- Medium paired boards (7-7-x, 5-5-x): Caller has more small pocket pairs\n\n**How It Affects Strategy:**\n- When you have range advantage → bet frequently (often small)\n- When you don't have range advantage → check more, be selective with bets\n- Range advantage determines c-bet frequency more than your specific hand",
+    "exampleHand": "You raised from CO and BB called. Flop: A♠K♦8♣. You have a massive range advantage — your range has AA, KK, AK, AQ while BB rarely has these hands (they would have 3-bet). You should c-bet very frequently here, even with hands like 77 or QJs.",
+    "keyTakeaways": [
+      "Think about your entire range, not just your hand",
+      "High boards favor the preflop raiser; low boards favor the caller",
+      "Range advantage determines bet frequency and sizing",
+      "Having range advantage doesn't mean every hand in your range is strong"
+    ]
+  },
+  {
+    "id": "blockers",
+    "title": "Blockers",
+    "shortDescription": "How the cards you hold reduce the probability of certain opponent holdings.",
+    "difficulty": "Intermediate",
+    "category": "Strategy",
+    "content": "Blockers (also called card removal effects) refer to how the cards in your hand affect the likelihood of certain hands being in your opponent's range. This concept is most important for bluffing and calling decisions.\n\n**Blocking Value Hands (Good for Bluffing):**\n- Holding an Ace blocks AA and AK\n- Holding a King on K-high board blocks KK and top pair\n- Holding a card of the flush suit blocks nut flushes\n\n**Unblocking Bluffs (Good for Calling):**\n- Not holding draw cards means villain could have missed draws\n- Not holding an Ace means villain could have more Ax bluffs\n\n**Where Blockers Matter Most:**\n- Preflop: 4-bet bluffing with Ax (blocks AA/AK)\n- River: Deciding to bluff or bluff-catch\n- 3-bet pots: Determining opponent's likely holdings\n\n**Important:** Blockers are a tiebreaker, not the primary reason to act. Don't bluff with terrible blockers, but don't overvalue good blockers when the spot itself is bad.",
+    "exampleHand": "You hold A♠5♠ and are considering a 4-bet bluff. Having the A♠ blocks AA (only 3 combos instead of 6) and blocks AKs specifically with the spade. This makes villain less likely to have a calling hand, improving your fold equity.",
+    "keyTakeaways": [
+      "Blockers reduce the number of specific hand combinations in villain's range",
+      "When bluffing, you want to block villain's strong hands",
+      "When calling, you want to unblock villain's bluffs",
+      "Blockers matter more in close decisions — they're tiebreakers"
+    ]
+  },
+  {
+    "id": "polarized-vs-merged",
+    "title": "Polarized vs Merged Ranges",
+    "shortDescription": "Understanding when to bet with a polarized range (strong hands + bluffs) vs a merged range (medium-strength hands).",
+    "difficulty": "Intermediate",
+    "category": "Strategy",
+    "content": "Your betting range can be structured in two main ways, and choosing correctly is crucial for exploitative and GTO play.\n\n**Polarized Range:**\n- Contains: Very strong hands (value) + weak hands (bluffs)\n- Skips: Medium-strength hands (which check/call instead)\n- Used with: Larger bet sizes (2/3 pot to overbet)\n- Best when: You can clearly divide your range into 'nuts or air'\n\n**Merged (Linear) Range:**\n- Contains: Strong and medium-strength hands for value\n- Excludes: Weak hands (which fold or check)\n- Used with: Smaller bet sizes (1/4 to 1/2 pot)\n- Best when: Medium hands can get value from weaker hands\n\n**When to Polarize:**\n- River betting (no more cards to come)\n- Large bet sizes on any street\n- When the board clearly defines nuts vs. bluff-catchers\n\n**When to Merge:**\n- C-betting dry boards (many hands benefit from a small bet)\n- When stack-to-pot ratio is low\n- When you have many medium-strength hands that want thin value",
+    "exampleHand": "River with a pot of 20BB. You bet 15BB (3/4 pot). This large sizing should be polarized: hands like sets/straights for value and missed draws as bluffs. A hand like second pair should check — it beats bluffs but loses to value bets.",
+    "keyTakeaways": [
+      "Large bets = polarized range; Small bets = merged range",
+      "Medium-strength hands usually check in a polarized strategy",
+      "River play is almost always polarized",
+      "Dry flops often use small, merged c-bets"
+    ]
+  },
+  {
+    "id": "position",
+    "title": "Position",
+    "shortDescription": "Why acting last gives you a massive strategic advantage in poker.",
+    "difficulty": "Beginner",
+    "category": "Fundamentals",
+    "content": "Position refers to where you sit relative to the dealer button and the order in which you act. Having position (acting last) is one of the biggest edges in poker.\n\n**Positions (6-max):**\n- UTG (Under The Gun): First to act, tightest range\n- HJ (Hijack): Second to act, slightly wider\n- CO (Cutoff): Third to act, fairly wide range\n- BTN (Button): Last to act preflop, widest range — BEST POSITION\n- SB (Small Blind): First to act postflop — WORST POSITION\n- BB (Big Blind): Second to act postflop, gets a discount\n\n**Why Position Matters:**\n1. **Information:** You see what opponents do before you act\n2. **Pot control:** You decide whether to bet or check last\n3. **Bluff efficiency:** You can bluff when checked to\n4. **Value extraction:** You can bet for thin value with more confidence\n5. **Equity realization:** You can see more cards without facing pressure\n\n**Long-term winrates by position:**\nBTN > CO > HJ > UTG > BB > SB",
+    "exampleHand": "You hold T♠9♠ on BTN and raise. BB calls. Flop: Q♥8♦3♣. BB checks. With position, you can c-bet as a bluff knowing you'll see villain's response first. If BB had position, they could check back and realize equity for free.",
+    "keyTakeaways": [
+      "The Button is the most profitable position — open widest from here",
+      "Being out of position is a major disadvantage — play tighter",
+      "Position allows better decision-making on every street",
+      "Never underestimate positional advantage — it's worth several BBs"
+    ]
+  },
+  {
+    "id": "c-betting",
+    "title": "C-Betting (Continuation Betting)",
+    "shortDescription": "Betting the flop as the preflop raiser to maintain initiative and pressure opponents.",
+    "difficulty": "Beginner",
+    "category": "Strategy",
+    "content": "A continuation bet (c-bet) is a bet made by the preflop raiser on the flop, continuing the aggression from preflop. It's one of the most fundamental postflop concepts.\n\n**When to C-Bet Frequently (High Frequency, Small Size):**\n- Dry, high-card boards (A-K-x, K-Q-x) — range advantage\n- Paired boards (K-K-x) — range advantage\n- You have a strong hand or good draw\n\n**When to C-Bet Selectively (Lower Frequency, Larger Size):**\n- Wet, connected boards (J-T-9, 8-7-6) — less range advantage\n- Low boards that favor caller's range\n- Multi-way pots (more opponents = more likely someone hit)\n\n**Modern C-Bet Strategy:**\nGTO solutions show that on many boards, a small c-bet (25-33% pot) at high frequency outperforms large c-bets at low frequency. The small size lets you bluff cheaply while still denying equity.\n\n**Common Mistake:** C-betting 100% of the time. Even on favorable boards, you should check some strong hands to protect your checking range.",
+    "exampleHand": "You raised from CO, BB called. Flop: A♦7♠2♣. This is an excellent c-bet board — you have range advantage with all the strong Ax hands. Bet 1/3 pot with your entire range: value from Ax hands and bluffs from everything else.",
+    "keyTakeaways": [
+      "C-bet based on range advantage, not just your specific hand",
+      "Small c-bets (1/4-1/3 pot) work well on dry, high-card boards",
+      "Larger c-bets (2/3 pot+) are better on wet, draw-heavy boards",
+      "Check some strong hands occasionally to balance your checking range"
+    ]
+  },
+  {
+    "id": "check-raising",
+    "title": "Check-Raising",
+    "shortDescription": "Checking with the intention of raising after your opponent bets — a powerful move for value and bluffs.",
+    "difficulty": "Intermediate",
+    "category": "Strategy",
+    "content": "A check-raise is when you check to an opponent, they bet, and you raise. It's one of the most powerful plays in poker, used for both value and bluffing.\n\n**Value Check-Raises:**\n- Strong hands (sets, two pair) on boards where villain c-bets frequently\n- Hands that benefit from building a big pot\n- Situations where villain's range is wide and calls too much\n\n**Bluff Check-Raises:**\n- Strong draws (flush draws + overcards, combo draws)\n- Hands with good equity that can also generate fold equity\n- Boards where your range can credibly represent strong hands\n\n**Good Check-Raise Boards:**\n- Wet boards with many draws (villain c-bets, you can raise draws)\n- Boards where you have nut advantage (e.g., you're BB and board is 5-4-3)\n\n**Sizing:** Check-raises are typically 3x the c-bet size. If villain bets 3BB into 6BB, raise to 9-10BB.\n\n**Risks:** Check-raising commits more chips and can backfire against very tight players who only bet strong hands.",
+    "exampleHand": "You hold 7♠6♠ in BB on a 8♠5♦4♣ flop. CO c-bets 2BB into 5BB. You check-raise to 7BB with an open-ended straight draw. You have great equity (~32% minimum) plus fold equity, making this a very profitable play.",
+    "keyTakeaways": [
+      "Check-raise for value with strong hands and as bluffs with draws",
+      "Size your check-raise to ~3x the bet",
+      "Wet boards are better for check-raising than dry boards",
+      "Balance your check-raise range with both value and bluffs"
+    ]
+  },
+  {
+    "id": "icm-basics",
+    "title": "ICM Basics",
+    "shortDescription": "How tournament payouts affect your decision-making beyond chip value.",
+    "difficulty": "Advanced",
+    "category": "Tournament",
+    "content": "ICM (Independent Chip Model) is a mathematical model that converts tournament chip stacks into real-money equity based on the payout structure. It's essential for tournament play.\n\n**Key ICM Concepts:**\n- **Non-linear chip value:** Doubling your stack does NOT double your tournament equity\n- **Bubble factor:** Near the money bubble, chips you risk are worth more than chips you gain\n- **Big stack advantage:** Big stacks can pressure short stacks who can't afford to bust\n\n**How ICM Changes Strategy:**\n1. **Tighter near the bubble:** Avoid marginal spots when a pay jump is near\n2. **Wider as big stack:** Exploit short stacks' survival pressure\n3. **Avoid flips:** A 50/50 gamble is -EV in ICM terms\n4. **Short stack shove ranges:** Narrower than in cash games\n\n**When ICM Matters Most:**\n- Bubble play (e.g., 4 players left, 3 get paid)\n- Final table with significant pay jumps\n- Satellite tournaments (all prizes equal)\n\n**ICM vs Chip EV:**\nIn cash games, a chip is always worth face value. In tournaments, the value depends on stack sizes and payouts. Making a +chipEV play can be -$EV due to ICM.",
+    "exampleHand": "4 players remain, 3 get paid ($1000/$600/$400). You have 20BB and face a shove from the chip leader. Even with AJs (normally a call), ICM pressure might make this a fold because busting costs you guaranteed money.",
+    "keyTakeaways": [
+      "Tournament chips have non-linear value — losing chips hurts more than gaining chips helps",
+      "Tighten up near the bubble and around big pay jumps",
+      "As the big stack, apply pressure to medium stacks",
+      "ICM doesn't apply in cash games — only tournaments with payout structures"
+    ]
+  },
+  {
+    "id": "three-bet-pots",
+    "title": "3-Bet Pots",
+    "shortDescription": "Strategy for playing hands after a re-raise preflop creates a larger pot.",
+    "difficulty": "Intermediate",
+    "category": "Strategy",
+    "content": "A 3-bet is a re-raise preflop (open-raise = 2-bet, re-raise = 3-bet). Playing 3-bet pots correctly is critical because the pot is already large relative to stack sizes.\n\n**Building a 3-Bet Range:**\n- **Value 3-bets:** QQ+, AK (sometimes TT+, AQs depending on position)\n- **Bluff 3-bets:** Suited aces (A2s-A5s), suited connectors (76s-T9s)\n- **Flat calls:** The hands in between (AJs, KQs, JJ, TT)\n\n**3-Bet Sizing:**\n- In position: 3x the open raise\n- Out of position: 3.5-4x the open raise\n- Against a 2.5BB open: 3-bet to 7.5-10BB\n\n**Postflop in 3-Bet Pots:**\n- SPR (stack-to-pot ratio) is much lower (~4-5 instead of ~13)\n- Commit more with overpairs (QQ+) and top pair good kicker\n- Draws are less profitable (less room to maneuver)\n- C-bet less often but with more polarized hands\n\n**Common Mistakes:**\n- 3-betting too wide against tight openers\n- Not 3-betting enough as a bluff (being too linear)\n- Playing too passively in 3-bet pots postflop",
+    "exampleHand": "You 3-bet to 9BB from SB with K♠K♦ vs CO open. CO calls. Pot is 19BB, effective stacks 91BB. Flop: A♥8♣3♦. SPR ~4.8. Despite the ace, KK should often c-bet small because villain has more Ax in their range but your overpair is still strong in a low-SPR pot.",
+    "keyTakeaways": [
+      "Build 3-bet ranges with value hands AND bluffs",
+      "Size 3-bets larger when out of position",
+      "3-bet pots have lower SPR — be ready to commit with strong hands",
+      "Balance your 3-bet range so opponents can't easily exploit you"
+    ]
+  },
+  {
+    "id": "bluff-catching",
+    "title": "Bluff Catching",
+    "shortDescription": "How to decide whether to call with a medium-strength hand facing a bet.",
+    "difficulty": "Advanced",
+    "category": "Strategy",
+    "content": "Bluff catching is calling a bet with a hand that only beats bluffs. It's one of the most difficult skills in poker and requires strong hand reading.\n\n**When You're in a Bluff-Catching Spot:**\n- Villain bets (usually river) and you have a medium-strength hand\n- You can't beat value hands but you beat all bluffs\n- You need to decide if villain is bluffing often enough to justify a call\n\n**Framework for Bluff-Catching:**\n1. Calculate pot odds (how often do you need to be right?)\n2. Count villain's value combos (hands that beat you)\n3. Count villain's potential bluffs (missed draws, etc.)\n4. If bluff combos ÷ (value + bluff combos) > pot odds needed → call\n\n**Which Hands to Bluff-Catch With:**\n- Hands that block villain's value range\n- Hands that unblock villain's bluffs\n- The strongest hands that didn't raise earlier streets\n\n**Minimum Defense Frequency (MDF):**\nTo prevent villain from profitably bluffing: MDF = 1 - (bet / (pot + bet))\n- 1/2 pot bet → defend ~67%\n- Full pot bet → defend ~50%\n- 2x pot bet → defend ~33%",
+    "exampleHand": "River pot is 20BB. Villain bets 10BB (1/2 pot). You hold A♥Q♣ on A♠8♣3♦5♥2♠. You need ~33% equity. Villain's value: sets, AK. Villain's bluffs: missed flush draws, KQ, KJ. Count: ~8 value combos vs ~6 bluff combos. 6/14 = 43% — call is profitable.",
+    "keyTakeaways": [
+      "Bluff catching requires counting villain's value vs bluff combinations",
+      "Use pot odds to determine how often you need to be right",
+      "Block value hands and unblock bluffs for the best bluff-catchers",
+      "Don't bluff-catch against opponents who never bluff"
+    ]
+  }
+]
