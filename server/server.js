@@ -370,6 +370,11 @@ app.get('/api/stats/:userId', (req, res) => {
   });
 });
 
-app.listen(PORT, () => {
-  console.log(`RangeIQ server running on port ${PORT}`);
-});
+// Only listen when running directly (not as a Vercel serverless function)
+if (!process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`RangeIQ server running on port ${PORT}`);
+  });
+}
+
+export default app;
